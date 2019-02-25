@@ -1,0 +1,29 @@
+# -*- coding:utf-8 -*-
+class Solution:
+    # s 源字符串
+    def replaceSpace(self, s):
+        # write code here
+        #计算原字符串长度
+        slength=len(s)
+        #计算原字符串空格长度
+        s=list(s)
+        count=0
+        for nbsp in s:
+            if nbsp==" ":
+                count+=1
+        #计算新字符串长度
+        s=s+[0]*2*count
+        #设置两个指针分别指向新旧字符串末尾
+        sp1=slength-1
+        sp2=len(s)-1
+        #逆序开始将空格替换
+        while sp1>=0:
+            if s[sp1]==" ":
+                for i in ["0","2","%"]:
+                    s[sp2]=i
+                    sp2-=1
+            else:
+                s[sp2]=s[sp1]
+                sp2-=1
+            sp1-=1
+        return "".join(s)
